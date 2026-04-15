@@ -6,10 +6,41 @@
 <title>N+Star 恩加斯達國際有限公司 | 智慧能源與機電工程</title>
 <meta name="description" content="N+Star 恩加斯達國際有限公司 — 智慧能源管理、IoT 監控、太陽能 EPC、ESG 碳盤查、EV 充電管理、MEP 機電工程。Infinite Possibilities, Brilliant People.">
 <meta name="keywords" content="N+Star,恩加斯達,智慧能源,IoT,太陽能,ESG,碳盤查,EV充電,機電工程,MEP">
+<link rel="canonical" href="https://halu0915.github.io/nstar-website/">
 <meta property="og:title" content="N+Star 恩加斯達國際有限公司">
 <meta property="og:description" content="智慧能源管理與機電工程整合解決方案">
+<meta property="og:url" content="https://halu0915.github.io/nstar-website/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="N+Star 恩加斯達國際">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="N+Star 恩加斯達國際有限公司">
+<meta name="twitter:description" content="智慧能源管理與機電工程整合解決方案">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "N+Star 恩加斯達國際有限公司",
+  "description": "智慧能源管理與機電工程整合解決方案",
+  "url": "https://halu0915.github.io/nstar-website/",
+  "telephone": "+886-929-863-950",
+  "email": "halu0915@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "明燈路三段98號",
+    "addressLocality": "瑞芳區",
+    "addressRegion": "新北市",
+    "addressCountry": "TW"
+  },
+  "taxID": "90301436",
+  "founder": { "@type": "Person", "name": "吳政儒" },
+  "serviceArea": { "@type": "Country", "name": "Taiwan" },
+  "knowsAbout": ["IoT", "太陽能", "ESG 碳盤查", "EV 充電", "機電工程", "能源管理"]
+}
+</script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -35,6 +66,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 .nav-cta { background: var(--green-dark); color: white; padding: 8px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: background 0.2s; }
 .nav-cta:hover { background: var(--green); }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: all 0.3s; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,17,32,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 24px; z-index: 99; }
+.mobile-menu.active { display: flex; flex-direction: column; gap: 4px; }
+.mobile-menu a { color: var(--text2); text-decoration: none; padding: 12px 16px; border-radius: 8px; font-size: 15px; transition: all 0.2s; }
+.mobile-menu a:hover { background: rgba(255,255,255,0.06); color: var(--text); }
 
 /* Hero */
 .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 100px 24px; }
@@ -109,6 +146,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .contact-form input, .contact-form textarea { padding: 14px 16px; border-radius: 8px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); font-size: 14px; font-family: var(--font); resize: vertical; }
 .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--green); }
 .contact-form textarea { min-height: 120px; }
+.form-success { display: none; padding: 16px; border-radius: 8px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); color: var(--green); text-align: center; font-size: 14px; }
 
 /* Footer */
 footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
@@ -122,6 +160,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links { display: none; }
+    .hamburger { display: block; }
     .hero h1 { font-size: 42px; }
     .services-grid { grid-template-columns: 1fr; }
     .stats { grid-template-columns: 1fr 1fr; }
@@ -140,9 +179,18 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
         <a href="#about">關於我們</a>
         <a href="#contact">聯絡我們</a>
     </div>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('active')" aria-label="選單">
+        <span></span><span></span><span></span>
+    </button>
     <a href="#contact" class="nav-cta">免費諮詢</a>
 </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('active')">服務項目</a>
+    <a href="#platform" onclick="document.getElementById('mobileMenu').classList.remove('active')">管理平台</a>
+    <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('active')">關於我們</a>
+    <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('active')">聯絡我們</a>
+</div>
 
 <section class="hero">
     <div class="stars">
@@ -232,12 +280,12 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
     <div class="desc">統一入口管理所有能源設備，即時數據、AI 分析、自動告警。</div>
 
     <div class="platform-links">
-        <a href="https://engasta-iot-production.up.railway.app" class="platform-link" target="_blank">IoT 監控</a>
-        <a href="https://engasta-iot-production.up.railway.app/ems" class="platform-link" target="_blank">能源管理</a>
-        <a href="https://engasta-iot-production.up.railway.app/water" class="platform-link" target="_blank">水務管理</a>
-        <a href="https://engasta-iot-production.up.railway.app/esg" class="platform-link" target="_blank">碳盤查</a>
-        <a href="https://engasta-iot-production.up.railway.app/ev" class="platform-link" target="_blank">EV 充電</a>
-        <a href="https://deploy-red-beta-76.vercel.app" class="platform-link" target="_blank">太陽能分析</a>
+        <a href="https://engasta-iot-production.up.railway.app" class="platform-link" target="_blank" rel="noopener noreferrer">IoT 監控</a>
+        <a href="https://engasta-iot-production.up.railway.app/ems" class="platform-link" target="_blank" rel="noopener noreferrer">能源管理</a>
+        <a href="https://engasta-iot-production.up.railway.app/water" class="platform-link" target="_blank" rel="noopener noreferrer">水務管理</a>
+        <a href="https://engasta-iot-production.up.railway.app/esg" class="platform-link" target="_blank" rel="noopener noreferrer">碳盤查</a>
+        <a href="https://engasta-iot-production.up.railway.app/ev" class="platform-link" target="_blank" rel="noopener noreferrer">EV 充電</a>
+        <a href="https://deploy-red-beta-76.vercel.app" class="platform-link" target="_blank" rel="noopener noreferrer">太陽能分析</a>
     </div>
 
     <div style="margin-top: 36px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; padding: 32px;">
@@ -251,7 +299,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
                     <span class="service-tag tag-blue">即時 ROI 計算</span>
                 </div>
             </div>
-            <a href="https://deploy-red-beta-76.vercel.app" target="_blank" class="btn-primary" style="white-space: nowrap; text-decoration: none;">立即體驗</a>
+            <a href="https://deploy-red-beta-76.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary" style="white-space: nowrap; text-decoration: none;">立即體驗</a>
         </div>
     </div>
 </section>
@@ -293,7 +341,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
         <h2 style="font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 12px;">信任合作夥伴</h2>
         <p style="color: var(--text2); margin-bottom: 48px;">與業界優秀企業攜手，打造完整機電、消防、空調、能源與工程服務閉環。</p>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
-            <a href="https://tianqingxin.vercel.app" target="_blank" style="text-decoration: none;">
+            <a href="https://tianqingxin.vercel.app" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: all 0.3s; text-align: center;">
                     <div style="font-size: 28px; font-weight: 800; color: var(--gold); font-family: var(--font-en); margin-bottom: 8px;">TQH</div>
                     <div style="font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 6px;">天擎鑫有限公司</div>
@@ -336,11 +384,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
             </div>
             <div class="contact-item">
                 <div class="contact-icon">M</div>
-                <div><div class="cl">電話</div><div class="cv">0929-863-950</div></div>
+                <div><div class="cl">電話</div><div class="cv"><a href="tel:+886929863950" style="color: var(--text); text-decoration: none;">0929-863-950</a></div></div>
             </div>
             <div class="contact-item">
                 <div class="contact-icon">E</div>
-                <div><div class="cl">Email</div><div class="cv">halu0915@gmail.com</div></div>
+                <div><div class="cl">Email</div><div class="cv" id="emailDisplay"></div></div>
             </div>
             <div class="contact-item">
                 <div class="contact-icon">A</div>
@@ -351,13 +399,14 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
                 <div><div class="cl">統一編號</div><div class="cv">90301436</div></div>
             </div>
         </div>
-        <div class="contact-form">
-            <input type="text" placeholder="姓名">
-            <input type="email" placeholder="Email">
-            <input type="text" placeholder="公司名稱">
-            <textarea placeholder="請描述您的需求..."></textarea>
-            <button class="btn-primary" style="width: 100%;">送出諮詢</button>
-        </div>
+        <form class="contact-form" id="contactForm" onsubmit="return handleSubmit(event)">
+            <input type="text" name="name" placeholder="姓名" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="company" placeholder="公司名稱">
+            <textarea name="message" placeholder="請描述您的需求..." required></textarea>
+            <button type="submit" class="btn-primary" style="width: 100%;">送出諮詢</button>
+            <div class="form-success" id="formSuccess">感謝您的諮詢！我們將盡快與您聯繫。</div>
+        </form>
     </div>
 </section>
 
@@ -368,6 +417,25 @@ footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: ce
     <div class="footer-line"></div>
     <div class="footer-copy">&copy; 2026 Engasta International Co., Ltd. All rights reserved. Tax ID: 90301436</div>
 </footer>
+
+<script>
+// Email obfuscation
+(function(){var u='halu0915',d='gmail.com',e=document.getElementById('emailDisplay');
+var a=document.createElement('a');a.href='mai'+'lto:'+u+'@'+d;a.style.cssText='color:var(--text);text-decoration:none';a.textContent=u+'@'+d;e.appendChild(a)})();
+
+// Contact form handler
+function handleSubmit(e){
+    e.preventDefault();
+    var f=document.getElementById('contactForm');
+    var d=new FormData(f);
+    var subject=encodeURIComponent('N+Star 網站諮詢 — '+d.get('name'));
+    var body=encodeURIComponent('姓名: '+d.get('name')+'\n公司: '+d.get('company')+'\nEmail: '+d.get('email')+'\n\n'+d.get('message'));
+    window.location.href='mai'+'lto:halu0915'+'@gmail.com?subject='+subject+'&body='+body;
+    document.getElementById('formSuccess').style.display='block';
+    setTimeout(function(){document.getElementById('formSuccess').style.display='none'},5000);
+    return false;
+}
+</script>
 
 </body>
 </html>
